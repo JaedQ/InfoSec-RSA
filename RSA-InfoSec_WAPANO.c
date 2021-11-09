@@ -12,13 +12,16 @@ int main() {
 	char text1[50]="ENCRYPTION";
 	char text2[50]="RASTAMAN";
 	int P = 11, Q = 13;
-
+	
 	printf("ENCRYPTION:1\n");
 	encrypt_text(P*Q,text1);
 	printf("\n\nENCRYPTION:2\n");
 	encrypt_text(P*Q,text2);
 	
-	return 0;
+	printf("\n\n\nDECRYPTION:1\n");
+	decrypt_text(P*Q,text1);
+	printf("\n\nDECRYPTION:2\n");
+	decrypt_text(P*Q,text2);
 }
 
 void encrypt_text(int N,char text[]){
@@ -28,6 +31,7 @@ void encrypt_text(int N,char text[]){
 	long int E = 7, D = 223;
 	int result_enc[MAX];
 	
+
 	for(trav = 0; trav<strlen(text); trav++){
 		temp = pow(text[trav], E);
 		temp = fmod(temp, N);
@@ -35,4 +39,23 @@ void encrypt_text(int N,char text[]){
 		++size;
 		printf("%c", result_enc[trav]);
 	}
+	
+}
+
+void decrypt_text(int N,char text[]){
+	
+	long int temp;
+	int trav,size=0;
+	long int E = 7, D = 223;
+	int result_dec[MAX];
+	
+
+	for(trav = 0; trav<strlen(text); trav++){
+		temp = pow(text[trav], D);
+		temp = fmod(temp, N);
+		result_dec[size] = temp;
+		++size;
+		printf("%c", result_dec[trav]);
+	}
+	
 }
