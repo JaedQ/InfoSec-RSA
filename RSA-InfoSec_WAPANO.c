@@ -6,7 +6,6 @@
 
 void en_de_crypt_text(int,char*);
 
-
 int main() {
 	
 	char text1[50]="ENCRYPTION";
@@ -15,7 +14,6 @@ int main() {
 	
 	printf("ENCRYPTION & DECRYPTION:1\n\n");
 	en_de_crypt_text(P*Q,text1);
-	
 	
 	printf("\n\nENCRYPTION & DECRYPTION:2\n");
 	en_de_crypt_text(P*Q,text2);
@@ -31,8 +29,8 @@ void en_de_crypt_text(int N,char text[]){
 	int result_enc[MAX];
 	int result_dec[MAX];
 
-    //ENCRYPTION OF TEXT
-    printf("Encryption: ");
+   	//ENCRYPTION OF TEXT
+    	printf("Encryption: ");
 	for(trav = 0; trav<strlen(text); trav++){
 		temp = pow(text[trav], E);
 		temp = fmod(temp, N);
