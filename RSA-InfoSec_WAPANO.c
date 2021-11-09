@@ -26,7 +26,7 @@ void encrypt_text(int N,char text[]){
 	double temp;
 	int trav,size=0;
 	long int E = 7, D = 223;
-	char result_enc[MAX];
+	int result_enc[MAX];
 	
 	for(trav = 0; trav<strlen(text); trav++){
 		temp = pow(text[trav], E);
