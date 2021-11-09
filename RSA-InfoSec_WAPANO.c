@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
+#define MAX 50
 
 void encrypt_text(int,char*);
 void decrypt_text(int,char*);
@@ -21,15 +22,16 @@ int main() {
 void encrypt_text(int N,char text[]){
 	
 	double temp;
-	int trav;
-	char result_enc[50];
+	int trav,size=0;
 	long int E = 7, D = 223;
+	char result_enc[MAX];
 	
-	
+
 	for(trav = 0; trav<strlen(text); trav++){
 		temp = pow(text[trav], E);
 		temp = fmod(temp, N);
-		result_enc[trav] = temp;
+		result_enc[size] = temp;
+		++size;
 		printf("%c", result_enc[trav]);
 	}
 	
