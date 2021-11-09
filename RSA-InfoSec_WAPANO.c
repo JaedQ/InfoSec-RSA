@@ -4,6 +4,7 @@
 #include <string.h>
 
 void encrypt_text(int,char*);
+void decrypt_text(int,char*);
 
 int main() {
 	
