@@ -4,8 +4,8 @@
 #include <string.h>
 #define MAX 50
 
-void encrypt_text(int,char*);
-void decrypt_text(int,char*);
+void en_de_crypt_text(int,char*);
+
 
 int main() {
 	
@@ -13,49 +13,43 @@ int main() {
 	char text2[50]="RASTAMAN";
 	int P = 11, Q = 13;
 	
-	printf("ENCRYPTION:1\n");
-	encrypt_text(P*Q,text1);
-	printf("\n\nENCRYPTION:2\n");
-	encrypt_text(P*Q,text2);
+	printf("ENCRYPTION & DECRYPTION:1\n\n");
+	en_de_crypt_text(P*Q,text1);
 	
-	printf("\n\n\nDECRYPTION:1\n");
-	decrypt_text(P*Q,text1);
-	printf("\n\nDECRYPTION:2\n");
-	decrypt_text(P*Q,text2);
+	
+	printf("\n\nENCRYPTION & DECRYPTION:2\n");
+	en_de_crypt_text(P*Q,text2);
+	
 }
-
-void encrypt_text(int N,char text[]){
 	
-	double temp;
-	int trav,size=0;
-	long int E = 7, D = 223;
+
+void en_de_crypt_text(int N,char text[]){
+	
+	double temp,temp2,res;
+	int trav,trav2,size_enc=0,size_dec=0;
+	int E = 7, D = 223;
 	int result_enc[MAX];
-	
+	int result_dec[MAX];
 
+    //ENCRYPTION OF TEXT
+    printf("Encryption: ");
 	for(trav = 0; trav<strlen(text); trav++){
 		temp = pow(text[trav], E);
 		temp = fmod(temp, N);
-		result_enc[size] = temp;
-		++size;
+		result_enc[size_enc] = temp;
+		++size_enc;
 		printf("%c", result_enc[trav]);
 	}
-	
-}
 
-void decrypt_text(int N,char text[]){
-	
-	long int temp;
-	int trav,size=0;
-	long int E = 7, D = 223;
-	int result_dec[MAX];
-	
-
-	for(trav = 0; trav<strlen(text); trav++){
-		temp = pow(text[trav], D);
-		temp = fmod(temp, N);
-		result_dec[size] = temp;
-		++size;
-		printf("%c", result_dec[trav]);
+	//DECRYPTION OF TEXT
+	printf("\nDecryption: ");
+	for(trav2 = 0; trav2<size_enc; trav2++){
+		temp2 = pow(result_enc[trav2],D);
+		temp2 = fmod(temp2, N);
+		result_dec[size_dec] = temp;
+		++size_dec;
+		printf("%c", result_dec[trav2]);
 	}
 	
 }
+
